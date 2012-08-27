@@ -1,0 +1,6 @@
+*.[oa]
+*.hi
+dist/
+Setup.*
+Setup
+!Setup.hs
