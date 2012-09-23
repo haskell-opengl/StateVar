@@ -1,8 +1,8 @@
 name: StateVar
-version: 1.0.0.0
+version: 1.1.0.0
 license: BSD3
 license-file: LICENSE
-maintainer: Sven Panne <sven.panne@aedion.de>
+maintainer: Jason Dagit <dagitj@gmail.com>
 bug-reports: mailto:hopengl@haskell.org
 homepage: http://www.haskell.org/HOpenGL/
 category: Data
@@ -11,7 +11,12 @@ description:
    This package contains state variables, which are references in the IO monad,
    like IORefs or parts of the OpenGL state.
 build-type: Simple
-exposed-modules: Data.StateVar
-hs-Source-Dirs: src
-ghc-options: -Wall
-build-depends: base >= 3 && < 5
+cabal-version: >= 1.6
+library
+  exposed-modules: Data.StateVar
+  hs-Source-Dirs: src
+  ghc-options: -Wall
+  build-depends: base >= 3 && < 5
+source-repository head
+  type:     git
+  location: https://github.com/haskell-opengl/StateVar

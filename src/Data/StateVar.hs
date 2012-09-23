@@ -4,7 +4,7 @@
 -- Copyright   :  (c) Sven Panne 2009
 -- License     :  BSD-style (see the file LICENSE)
 -- 
--- Maintainer  :  sven.panne@aedion.de
+-- Maintainer  :  dagitj@gmail.com
 -- Stability   :  stable
 -- Portability :  portable
 --
