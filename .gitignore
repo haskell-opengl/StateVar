@@ -1,6 +1,4 @@
-*.[oa]
-*.hi
-dist/
-Setup.*
-Setup
-!Setup.hs
+/cabal-dev/
+/dist/
+*.swp
+*~

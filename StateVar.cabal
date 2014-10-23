@@ -1,10 +1,10 @@
 name: StateVar
-version: 1.0.0.0
+version: 1.0.1.0
 license: BSD3
 license-file: LICENSE
-maintainer: Sven Panne <sven.panne@aedion.de>
-bug-reports: mailto:hopengl@haskell.org
-homepage: http://www.haskell.org/HOpenGL/
+maintainer: Sven Panne <svenpanne@gmail.com>
+bug-reports: https://github.com/haskell-opengl/OpenGLRaw/issues
+homepage: https://github.com/haskell-opengl/OpenGLRaw
 category: Data
 synopsis: State variables
 description:

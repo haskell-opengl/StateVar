@@ -1,10 +1,10 @@
 --------------------------------------------------------------------------------
 -- |
 -- Module      :  Data.StateVar
--- Copyright   :  (c) Sven Panne 2009
--- License     :  BSD-style (see the file LICENSE)
+-- Copyright   :  (c) Sven Panne 2014
+-- License     :  BSD3
 -- 
--- Maintainer  :  sven.panne@aedion.de
+-- Maintainer  :  Sven Panne <svenpanne@gmail.com>
 -- Stability   :  stable
 -- Portability :  portable
 --
@@ -47,16 +47,17 @@
 module Data.StateVar (
    -- * Readable State Variables
    HasGetter(..),
-   GettableStateVar, makeGettableStateVar,
+   GettableStateVar(..), makeGettableStateVar,
    -- * Writable State Variables
    HasSetter(..),
-   SettableStateVar, makeSettableStateVar,
+   SettableStateVar(..), makeSettableStateVar,
    -- * General State Variables
-   StateVar, makeStateVar,
+   StateVar(..), makeStateVar,
    -- * Utility Functions
    ($~), ($=!), ($~!)
 ) where
 
+import Control.Applicative ( Applicative(..) )
 import Data.IORef ( IORef, readIORef, writeIORef )
 
 --------------------------------------------------------------------------------
@@ -80,6 +81,17 @@ newtype GettableStateVar a = GettableStateVar (IO a)
 instance HasGetter GettableStateVar where
    get (GettableStateVar g) = g
 
+instance Functor GettableStateVar where
+  fmap f (GettableStateVar g) = GettableStateVar (fmap f g)
+
+instance Applicative GettableStateVar where
+  pure = GettableStateVar . pure
+  GettableStateVar g <*> GettableStateVar h = GettableStateVar (g <*> h)
+
+instance Monad GettableStateVar where
+  return = pure
+  GettableStateVar g >>= h = GettableStateVar (g >>= get . h)
+
 -- | Construct a 'GettableStateVar' from an IO action.
 makeGettableStateVar :: IO a -> GettableStateVar a
 makeGettableStateVar = GettableStateVar
@@ -100,6 +112,9 @@ newtype SettableStateVar a = SettableStateVar (a -> IO ())
 
 instance HasSetter SettableStateVar where
    ($=) (SettableStateVar s) a = s a
+
+-- instance Contravariant SettableStateVar where
+--    contramap f (SettableStateVar s) = SettableStateVar (s . f)
 
 -- | Construct a 'SettableStateVar' from an IO action.
 makeSettableStateVar :: (a -> IO ()) -> SettableStateVar a
