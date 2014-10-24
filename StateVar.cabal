@@ -3,8 +3,8 @@ version: 1.0.1.0
 license: BSD3
 license-file: LICENSE
 maintainer: Sven Panne <svenpanne@gmail.com>
-bug-reports: https://github.com/haskell-opengl/OpenGLRaw/issues
-homepage: https://github.com/haskell-opengl/OpenGLRaw
+bug-reports: https://github.com/haskell-opengl/StateVar/issues
+homepage: https://github.com/haskell-opengl/StateVar
 category: Data
 synopsis: State variables
 description:
