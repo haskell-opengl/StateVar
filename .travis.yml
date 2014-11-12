@@ -17,7 +17,7 @@ before_install:
 
 install:
  - sudo apt-get install -qq cabal-install-$CABALVER ghc-$GHCVER
- - export PATH="/opt/cabal/$CABALVER/bin:/opt/ghc/$GHCVER/bin:$PATH"
+ - export PATH="/opt/ghc/$GHCVER/bin:/opt/cabal/$CABALVER/bin:$PATH"
 
 before_script:
  - cabal --version
