@@ -15,3 +15,7 @@ exposed-modules: Data.StateVar
 hs-Source-Dirs: src
 ghc-options: -Wall
 build-depends: base >= 3 && < 5
+
+source-repository head
+   type: git
+   location: https://github.com/haskell-opengl/StateVar.git
