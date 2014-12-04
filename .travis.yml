@@ -22,6 +22,7 @@ before_script:
  - ghc-pkg list
 
 script:
+ - cabal configure
  - cabal install --enable-documentation
  - cabal sdist -v3
 
