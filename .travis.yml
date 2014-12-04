@@ -23,7 +23,9 @@ before_script:
 
 script:
  - cabal configure
+ - ls -l dist
  - cabal install --enable-documentation
+ - ls -l dist
  - cabal sdist -v3
 
 after_script:
