@@ -9,7 +9,7 @@ bug-reports: https://github.com/haskell-opengl/StateVar/issues
 license: BSD3
 license-file: LICENSE
 author: Sven Panne
-maintainer: svenpanne@gmail.com
+maintainer: Sven Panne <svenpanne@gmail.com>
 category: Data
 build-type: Simple
 cabal-version: >=1.10
