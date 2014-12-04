@@ -22,11 +22,8 @@ before_script:
  - ghc-pkg list
 
 script:
- - cabal configure
- - ls -l dist
  - cabal install --enable-documentation
- - ls -l dist
- - cabal sdist -v3
+ - cabal sdist
 
 after_script:
  - ghc-pkg list
