@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/haskell-opengl/StateVar.png)](https://travis-ci.org/haskell-opengl/StateVar)
+[![Hackage](https://img.shields.io/hackage/v/StateVar.svg)](https://hackage.haskell.org/package/StateVar) [![Build Status](https://travis-ci.org/haskell-opengl/StateVar.png)](https://travis-ci.org/haskell-opengl/StateVar)
