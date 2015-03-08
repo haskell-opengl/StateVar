@@ -8,7 +8,7 @@
 --------------------------------------------------------------------------------
 -- |
 -- Module      :  Data.StateVar
--- Copyright   :  (c) Edward Kmett 2014-2015, Sven Panne 2014
+-- Copyright   :  (c) Edward Kmett 2014-2015, Sven Panne 2009-2014
 -- License     :  BSD3
 -- 
 -- Maintainer  :  Sven Panne <svenpanne@gmail.com>
