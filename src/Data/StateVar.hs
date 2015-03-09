@@ -160,7 +160,7 @@ infixr 2 $=, $=!
 
 -- | This is the class of all writable state variables.
 class HasSetter t a | t -> a where
-   -- | Write a new value into a state variable.
+  -- | Write a new value into a state variable.
   ($=) :: MonadIO m => t -> a -> m ()
 
 -- | This is a variant of '$=' which is strict in the value to be set.
