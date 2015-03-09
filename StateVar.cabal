@@ -39,7 +39,7 @@ library
 
   if impl(ghc>=7.4)
     -- other-extensions: DefaultSignatures
-    cpp-options: -DXXXUSE_DEFAULT_SIGNATURES=1
+    cpp-options: -DUSE_DEFAULT_SIGNATURES=1
 
 source-repository head
   type: git
