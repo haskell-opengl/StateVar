@@ -3,7 +3,9 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE FunctionalDependencies #-}
 {-# LANGUAGE FlexibleInstances #-}
+#if USE_DEFAULT_SIGNATURES
 {-# LANGUAGE DefaultSignatures #-}
+#endif
 {-# LANGUAGE TypeFamilies #-}
 --------------------------------------------------------------------------------
 -- |
@@ -197,21 +199,34 @@ infixr 2 $~, $~!
 class HasSetter t a => HasUpdate t a b | t -> a b where
   -- | Transform the contents of a state variable with a given funtion.
   ($~) :: MonadIO m => t -> (a -> b) -> m ()
+#if USE_DEFAULT_SIGNATURES
   default ($~) :: (MonadIO m, a ~ b, HasGetter t a, HasSetter t a) => t -> (a -> b) -> m ()
-  r $~ f = liftIO $ do
-    a <- get r
-    r $= f a
-
+  ($~) = defaultUpdate
+#endif
   -- | This is a variant of '$~' which is strict in the transformed value.
   ($~!) :: MonadIO m => t -> (a -> b) -> m ()
+#if USE_DEFAULT_SIGNATURES
   default ($~!) :: (MonadIO m, a ~ b, HasGetter t a, HasSetter t a) => t -> (a -> b) -> m ()
-  r $~! f = liftIO $ do
-    a <- get r
-    r $=! f a
+  ($~!) = defaultUpdateStrict
+#endif
 
-instance HasUpdate (StateVar a) a a
+defaultUpdate :: (MonadIO m, a ~ b, HasGetter t a, HasSetter t a) => t -> (a -> b) -> m ()
+defaultUpdate r f = liftIO $ do
+  a <- get r
+  r $= f a
 
-instance Storable a => HasUpdate (Ptr a) a a
+defaultUpdateStrict :: (MonadIO m, a ~ b, HasGetter t a, HasSetter t a) => t -> (a -> b) -> m ()
+defaultUpdateStrict r f = liftIO $ do
+  a <- get r
+  r $=! f a
+
+instance HasUpdate (StateVar a) a a where
+  ($~) = defaultUpdate
+  ($~!) = defaultUpdateStrict
+
+instance Storable a => HasUpdate (Ptr a) a a where
+  ($~) = defaultUpdate
+  ($~!) = defaultUpdateStrict
 
 instance HasUpdate (IORef a) a a where
   r $~ f  = liftIO $ atomicModifyIORef r $ \a -> (f a,())

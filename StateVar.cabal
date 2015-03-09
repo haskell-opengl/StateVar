@@ -32,10 +32,14 @@ library
     MultiParamTypeClasses
     FunctionalDependencies
     FlexibleInstances
-    DefaultSignatures
     TypeFamilies
+
   hs-source-dirs: src
   ghc-options: -Wall
+
+  if impl(ghc>=7.4)
+    -- other-extensions: DefaultSignatures
+    cpp-options: -DXXXUSE_DEFAULT_SIGNATURES=1
 
 source-repository head
   type: git
