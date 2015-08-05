@@ -90,17 +90,13 @@ import Foreign.Storable
 
 -- | A concrete implementation of a readable and writable state variable,
 -- carrying one IO action to read the value and another IO action to write the
--- new value.
+-- new value. This data type represents a piece of mutable, imperative state
+-- with possible side-effects. These tend to encapsulate all sorts tricky
+-- behavior in external libraries, and may well throw exceptions. Inhabitants
+-- __should__ satsify the following properties:
 --
--- This data type represents a piece of mutable, imperative state
--- with possible side-effects. These tend to encapsulate all sorts
--- tricky behavior in external libraries, and may well throw
--- exceptions.
---
--- Inhabitants __should__ satsify the following properties.
---
--- In the absence of concurrent mutation from other threads or a
--- thrown exception:
+-- * In the absence of concurrent mutation from other threads or a thrown
+-- exception:
 --
 -- @
 -- do x <- 'get' v; v '$=' y; v '$=' x
@@ -108,7 +104,7 @@ import Foreign.Storable
 --
 -- should restore the previous state.
 --
--- Ideally, in the absence of thrown exceptions:
+-- * Ideally, in the absence of thrown exceptions:
 --
 -- @
 -- v '$=' a >> 'get' v
@@ -196,6 +192,7 @@ instance HasSetter (TVar a) a where
 
 infixr 2 $~, $~!
 
+-- | This is the class of all updatable state variables.
 class HasSetter t a => HasUpdate t a b | t -> a b where
   -- | Transform the contents of a state variable with a given funtion.
   ($~) :: MonadIO m => t -> (a -> b) -> m ()
@@ -250,6 +247,7 @@ instance HasUpdate (TVar a) a a where
 -- * HasGetter
 --------------------------------------------------------------------
 
+-- | This is the class of all readable state variables.
 class HasGetter t a | t -> a where
   get :: MonadIO m => t -> m a
 
