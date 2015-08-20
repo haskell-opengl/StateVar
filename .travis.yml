@@ -11,13 +11,15 @@ matrix:
   allow_failures:
    - env: CABALVER=head GHCVER=head
 
-before_install:
- - sudo add-apt-repository -y ppa:hvr/ghc
- - sudo apt-get update -qq
+sudo: false
 
-install:
- - sudo apt-get install -qq cabal-install-$CABALVER ghc-$GHCVER
- - export PATH="/opt/cabal/$CABALVER/bin:/opt/ghc/$GHCVER/bin:$PATH"
+addons:
+  apt:
+    sources:
+     - hvr-ghc
+    packages:
+     - ghc-$GHCVER
+     - cabal-$CABALVER
 
 before_script:
  - cabal --version
