@@ -21,6 +21,9 @@ addons:
      - ghc-$GHCVER
      - cabal-$CABALVER
 
+install:
+ - export PATH="/opt/cabal/$CABALVER/bin:/opt/ghc/$GHCVER/bin:$PATH"
+
 before_script:
  - cabal --version
  - cabal update
