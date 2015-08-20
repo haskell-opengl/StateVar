@@ -14,7 +14,8 @@ matrix:
 sudo: false
 
 # It seems that we can't use CABALVER and GHCVER here, so we have to install
-# all versions. This looks like a bug on Travis CI.
+# all versions. This looks like a bug on Travis CI. Furthermore, GHC 7.10.2
+# is not on the whitelist yet. (TODO: Change 7.10.1 to 7.10.2 when possible.)
 addons:
   apt:
     sources:
@@ -25,12 +26,12 @@ addons:
      - ghc-7.4.2
      - ghc-7.6.3
      - ghc-7.8.4
-     - ghc-7.10.2
+     - ghc-7.10.1
      - ghc-head
-     - cabal-1.16
-     - cabal-1.20
-     - cabal-1.22
-     - cabal-head
+     - cabal-install-1.16
+     - cabal-install-1.20
+     - cabal-install-1.22
+     - cabal-install-head
 
 install:
  - export PATH="/opt/cabal/$CABALVER/bin:/opt/ghc/$GHCVER/bin:$PATH"
