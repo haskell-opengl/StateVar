@@ -1,5 +1,3 @@
-language: haskell
-
 # It seems that we can't use the CABALVER and GHCVER environment variables in a
 # toplevel addons.apt.packages section, so we have to duplicate things below.
 # Furthermore, GHC 7.10.2 is not on the whitelist yet.
