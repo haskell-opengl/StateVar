@@ -1,3 +1,7 @@
+1.1.0.2
+-------
+* Relaxed upper version bound for `transformers`.
+
 1.1.0.1
 -------
 * Documentation changes only.
