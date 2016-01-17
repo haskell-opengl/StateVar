@@ -200,13 +200,13 @@ class HasSetter t a => HasUpdate t a b | t -> a b where
   -- | Transform the contents of a state variable with a given funtion.
   ($~) :: MonadIO m => t -> (a -> b) -> m ()
 #if USE_DEFAULT_SIGNATURES
-  default ($~) :: (MonadIO m, a ~ b, HasGetter t a, HasSetter t a) => t -> (a -> b) -> m ()
+  default ($~) :: (MonadIO m, a ~ b, HasGetter t a) => t -> (a -> b) -> m ()
   ($~) = defaultUpdate
 #endif
   -- | This is a variant of '$~' which is strict in the transformed value.
   ($~!) :: MonadIO m => t -> (a -> b) -> m ()
 #if USE_DEFAULT_SIGNATURES
-  default ($~!) :: (MonadIO m, a ~ b, HasGetter t a, HasSetter t a) => t -> (a -> b) -> m ()
+  default ($~!) :: (MonadIO m, a ~ b, HasGetter t a) => t -> (a -> b) -> m ()
   ($~!) = defaultUpdateStrict
 #endif
 
