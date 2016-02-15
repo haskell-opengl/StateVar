@@ -13,8 +13,19 @@ author: Sven Panne and Edward Kmett
 maintainer: Sven Panne <svenpanne@gmail.com>
 category: Data
 build-type: Simple
-cabal-version: >=1.10
-extra-source-files: README.md CHANGELOG.md
+cabal-version: >= 1.10
+tested-with:
+  GHC == 7.0.4
+  GHC == 7.2.2
+  GHC == 7.4.2
+  GHC == 7.6.3
+  GHC == 7.8.4
+  GHC == 7.10.3
+  GHC == 8.0.1
+  GHC == 8.1
+extra-source-files:
+  README.md
+  CHANGELOG.md
 
 library
   exposed-modules:
@@ -36,7 +47,8 @@ library
 
   hs-source-dirs: src
   ghc-options: -Wall
-
+  if impl(ghc > 8)
+    ghc-options: -Wcompat
   if impl(ghc>=7.4)
     -- other-extensions: DefaultSignatures
     cpp-options: -DUSE_DEFAULT_SIGNATURES=1
