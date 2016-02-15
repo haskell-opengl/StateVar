@@ -13,7 +13,6 @@ author: Sven Panne and Edward Kmett
 maintainer: Sven Panne <svenpanne@gmail.com>
 category: Data
 build-type: Simple
-cabal-version: >= 1.10
 tested-with:
   GHC == 7.0.4
   GHC == 7.2.2
@@ -23,6 +22,7 @@ tested-with:
   GHC == 7.10.3
   GHC == 8.0.1
   GHC == 8.1
+cabal-version: >= 1.10
 extra-source-files:
   README.md
   CHANGELOG.md
