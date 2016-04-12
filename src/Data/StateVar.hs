@@ -10,7 +10,7 @@
 --------------------------------------------------------------------------------
 -- |
 -- Module      :  Data.StateVar
--- Copyright   :  (c) Edward Kmett 2014-2015, Sven Panne 2009-2014
+-- Copyright   :  (c) Edward Kmett 2014-2015, Sven Panne 2009-2016
 -- License     :  BSD3
 -- 
 -- Maintainer  :  Sven Panne <svenpanne@gmail.com>
@@ -193,7 +193,7 @@ instance HasSetter (TVar a) a where
 infixr 2 $~, $~!
 
 -- | This is the class of all updatable state variables.
-class HasSetter t a => HasUpdate t a b | t -> a b where
+class HasSetter t b => HasUpdate t a b | t -> a b where
   -- | Transform the contents of a state variable with a given funtion.
   ($~) :: MonadIO m => t -> (a -> b) -> m ()
 #if USE_DEFAULT_SIGNATURES
