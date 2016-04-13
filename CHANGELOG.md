@@ -1,3 +1,7 @@
+1.1.0.4
+-------
+* Corrected HasUpdate's superclass constraint.
+
 1.1.0.3
 -------
 * Removed a couple of redundant typeclass constraints.
