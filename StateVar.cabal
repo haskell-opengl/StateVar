@@ -6,7 +6,7 @@ description:
   like IORefs or parts of the OpenGL state.
 homepage: https://github.com/haskell-opengl/StateVar
 bug-reports: https://github.com/haskell-opengl/StateVar/issues
-copyright: Copyright (C) 2014-2015 Edward A. Kmett, 2009-2016 Sven Panne
+copyright: Copyright (C) 2014-2015 Edward A. Kmett, 2009-2017 Sven Panne
 license: BSD3
 license-file: LICENSE
 author: Sven Panne and Edward Kmett

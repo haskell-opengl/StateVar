@@ -10,7 +10,7 @@
 --------------------------------------------------------------------------------
 -- |
 -- Module      :  Data.StateVar
--- Copyright   :  (c) Edward Kmett 2014-2015, Sven Panne 2009-2016
+-- Copyright   :  (c) Edward Kmett 2014-2015, Sven Panne 2009-2017
 -- License     :  BSD3
 -- 
 -- Maintainer  :  Sven Panne <svenpanne@gmail.com>
