@@ -238,7 +238,7 @@ instance Storable a => HasUpdate (Ptr a) a a where
 
 instance HasUpdate (IORef a) a a where
   r $~ f  = liftIO $ atomicModifyIORef r $ \a -> (f a,())
-#if __GLASGOW_HASKELL__ >= 706
+#if MIN_VERSION_base(4,6,0)
   r $~! f = liftIO $ atomicModifyIORef' r $ \a -> (f a,())
 #else
   r $~! f = liftIO $ do
