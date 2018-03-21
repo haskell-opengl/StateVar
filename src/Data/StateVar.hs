@@ -83,6 +83,10 @@ import Data.IORef
 import Data.Typeable
 import Foreign.Ptr
 import Foreign.Storable
+--TODO: We actually want to check for base >= 4.12, but there has been no version bump yet.
+#if __GLASGOW_HASKELL__ >= 805
+import Data.Functor.Contravariant
+#endif
 
 --------------------------------------------------------------------
 -- * StateVar
@@ -113,6 +117,13 @@ import Foreign.Storable
 -- should return @a@, regardless of @a@. In practice some 'StateVar's only
 -- permit a very limited range of value assignments, and do not report failure.
 data StateVar a = StateVar (IO a) (a -> IO ()) deriving Typeable
+
+--TODO: We actually want to check for base >= 4.12, but there has been no version bump yet.
+#if __GLASGOW_HASKELL__ >= 805
+instance Contravariant SettableStateVar where
+  contramap f (SettableStateVar k) = SettableStateVar (k . f)
+  {-# INLINE contramap #-}
+#endif
 
 -- | Construct a 'StateVar' from two IO actions, one for reading and one for
 --- writing.
