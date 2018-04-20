@@ -83,8 +83,7 @@ import Data.IORef
 import Data.Typeable
 import Foreign.Ptr
 import Foreign.Storable
---TODO: We actually want to check for base >= 4.12, but there has been no version bump yet.
-#if __GLASGOW_HASKELL__ >= 805
+#if MIN_VERSION_base(4,12,0)
 import Data.Functor.Contravariant
 #endif
 
@@ -118,8 +117,7 @@ import Data.Functor.Contravariant
 -- permit a very limited range of value assignments, and do not report failure.
 data StateVar a = StateVar (IO a) (a -> IO ()) deriving Typeable
 
---TODO: We actually want to check for base >= 4.12, but there has been no version bump yet.
-#if __GLASGOW_HASKELL__ >= 805
+#if MIN_VERSION_base(4,12,0)
 instance Contravariant SettableStateVar where
   contramap f (SettableStateVar k) = SettableStateVar (k . f)
   {-# INLINE contramap #-}
