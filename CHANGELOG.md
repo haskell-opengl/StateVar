@@ -1,3 +1,7 @@
+1.1.1.0
+-------
+* Track recent move of `Contravariant` to `base`.
+
 1.1.0.4
 -------
 * Corrected HasUpdate's superclass constraint.
