@@ -1,3 +1,7 @@
+1.1.1.1
+-------
+* Relaxed upper version bound for `stm`.
+
 1.1.1.0
 -------
 * Track recent move of `Contravariant` to `base`.
