@@ -1,5 +1,5 @@
 name: StateVar
-version: 1.1.1.1
+version: 1.2
 synopsis: State variables
 description:
   This package contains state variables, which are references in the IO monad,

@@ -10,7 +10,7 @@
 --------------------------------------------------------------------------------
 -- |
 -- Module      :  Data.StateVar
--- Copyright   :  (c) Edward Kmett 2014-2015, Sven Panne 2009-2018
+-- Copyright   :  (c) Edward Kmett 2014-2019, Sven Panne 2009-2018
 -- License     :  BSD3
 -- 
 -- Maintainer  :  Sven Panne <svenpanne@gmail.com>
@@ -81,6 +81,7 @@ import Control.Concurrent.STM
 import Control.Monad.IO.Class
 import Data.IORef
 import Data.Typeable
+import Foreign.ForeignPtr
 import Foreign.Ptr
 import Foreign.Storable
 #if MIN_VERSION_base(4,12,0)
@@ -195,6 +196,10 @@ instance HasSetter (TVar a) a where
   p $= a = liftIO $ atomically $ writeTVar p a
   {-# INLINE ($=) #-}
 
+instance Storable a => HasSetter (ForeignPtr a) a where
+  p $= a = liftIO $ withForeignPtr p ($= a)
+  {-# INLINE ($=) #-}
+
 --------------------------------------------------------------------
 -- * HasUpdate
 --------------------------------------------------------------------
@@ -252,6 +257,10 @@ instance HasUpdate (TVar a) a a where
     a <- readTVar r
     writeTVar r $! f a
 
+instance Storable a => HasUpdate (ForeignPtr a) a a where
+  p $~ f = liftIO $ withForeignPtr p ($~ f)
+  p $~! f = liftIO $ withForeignPtr p ($~! f)
+
 --------------------------------------------------------------------
 -- * HasGetter
 --------------------------------------------------------------------
@@ -283,3 +292,8 @@ instance Storable a => HasGetter (Ptr a) a where
 instance HasGetter (IORef a) a where
   get = liftIO . readIORef
   {-# INLINE get #-}
+
+instance Storable a => HasGetter (ForeignPtr a) a where
+  get p = liftIO $ withForeignPtr p get
+  {-# INLINE get #-}
+

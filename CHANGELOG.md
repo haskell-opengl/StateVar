@@ -1,3 +1,7 @@
+1.2
+---
+* Added instances for `ForeignPtr`.
+
 1.1.1.1
 -------
 * Relaxed upper version bound for `stm`.
