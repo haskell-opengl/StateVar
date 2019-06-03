@@ -1,5 +1,7 @@
 *.swp
 *~
+/.ghc.*
 /.cabal-sandbox
+/dist-newstyle
 /dist
 cabal.sandbox.config
