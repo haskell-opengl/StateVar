@@ -7,6 +7,12 @@
 {-# LANGUAGE DefaultSignatures #-}
 #endif
 {-# LANGUAGE TypeFamilies #-}
+-- Foreign.ForeignPtr is unsafe before GHC-7.10
+#if __GLASGOW_HASKELL__ >=710 && MIN_VERSION_base(4,8,0)
+{-# LANGUAGE Safe #-}
+#elif __GLASGOW_HASKELL__ >=702
+{-# LANGUAGE Trustworthy #-}
+#endif
 --------------------------------------------------------------------------------
 -- |
 -- Module      :  Data.StateVar

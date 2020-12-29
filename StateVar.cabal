@@ -1,5 +1,5 @@
 name: StateVar
-version: 1.2
+version: 1.2.1
 synopsis: State variables
 description:
   This package contains state variables, which are references in the IO monad,
@@ -24,7 +24,8 @@ tested-with:
   GHC == 8.2.2
   GHC == 8.4.3
   GHC == 8.6.5
-  GHC == 8.8.1
+  GHC == 8.8.4
+  GHC == 8.10.3
 cabal-version: >= 1.10
 extra-source-files:
   README.md
@@ -36,8 +37,8 @@ library
 
   build-depends:
     base         >= 4   && < 5,
-    stm          >= 2.2.0.1 && < 2.6,
-    transformers >= 0.2 && < 0.6
+    stm          >= 2.3.0.1 && < 2.6,
+    transformers >= 0.3 && < 0.6
 
   default-language: Haskell2010
   other-extensions:
@@ -55,6 +56,11 @@ library
   if impl(ghc>=7.4)
     -- other-extensions: DefaultSignatures
     cpp-options: -DUSE_DEFAULT_SIGNATURES=1
+
+  if impl(ghc >= 9.0)
+    -- these flags may abort compilation with GHC-8.10
+    -- https://gitlab.haskell.org/ghc/ghc/-/merge_requests/3295
+    ghc-options: -Winferred-safe-imports -Wmissing-safe-haskell-mode
 
 source-repository head
   type: git
