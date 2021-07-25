@@ -1,3 +1,7 @@
+1.2.2
+-----
+* Relaxed upper version bound for `transformers`.
+
 1.2.1
 -----
 * Explicitly mark `Data.StateVar` as Safe (or Trustworthy for GHC before 7.10).
