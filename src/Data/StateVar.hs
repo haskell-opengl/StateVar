@@ -214,7 +214,7 @@ infixr 2 $~, $~!
 
 -- | This is the class of all updatable state variables.
 class HasSetter t b => HasUpdate t a b | t -> a b where
-  -- | Transform the contents of a state variable with a given funtion.
+  -- | Transform the contents of a state variable with a given function.
   ($~) :: MonadIO m => t -> (a -> b) -> m ()
 #if USE_DEFAULT_SIGNATURES
   default ($~) :: (MonadIO m, a ~ b, HasGetter t a) => t -> (a -> b) -> m ()
