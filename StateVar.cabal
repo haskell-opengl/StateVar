@@ -16,10 +16,6 @@ description:
     like IORefs or parts of the OpenGL state.
 build-type: Simple
 tested-with:
-    GHC == 7.0.4
-    GHC == 7.2.2
-    GHC == 7.4.2
-    GHC == 7.10.3
     GHC == 8.0.2
     GHC == 8.2.2
     GHC == 8.4.4
@@ -29,8 +25,9 @@ tested-with:
     GHC == 9.0.2
     GHC == 9.2.8
     GHC == 9.4.8
-    GHC == 9.6.4
-    GHC == 9.8.1
+    GHC == 9.6.6
+    GHC == 9.8.2
+    GHC == 9.10.1
 extra-doc-files:
     CHANGELOG.md
     README.md
